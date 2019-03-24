@@ -1,0 +1,3 @@
+sc.nextInt() 預設不會換行，會導致一連串的錯誤
+
+建議改成 Integer.parseInt(sc.nextNext())
