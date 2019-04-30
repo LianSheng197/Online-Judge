@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class codecafe{
+    public static void main(String []args){
+        Scanner sc = new Scanner(System.in);
+        // read string, temp1 (for count), temp2 (for check prev)
+        String s, t, tmp;
+        // all times
+        int times = Integer.parseInt(sc.next());
+        
+        while(times-->0) {
+            // (for count) each unique char count.
+            int cnt = 0;
+            // (for count) index
+            int index = 0;
+            // prev char.
+            char prev = '0';
+            boolean accept = true;
+            
+            s = sc.next();
+            t = s;
+            
+            // get unique each char count.
+            while(t.length()>0){
+                tmp = t.replaceAll(Character.toString(t.charAt(0)), "");
+                if(index==0){
+                    cnt = t.length() - tmp.length();
+                } else {
+                    if(cnt != t.length() - tmp.length()){
+                        accept = false;
+                        break;
+                    }
+                }
+                t = tmp;
+                index++;
+            }
+            
+            if(!accept) {
+                System.out.println("WRONG ANSWER");
+            } else {
+                // check prev
+                for(int i=0; i<s.length(); i++){
+                    if(i>0 && prev == s.charAt(i)) {
+                        accept = false;
+                        break;
+                    }
+                    prev = s.charAt(i);
+                }
+                
+                if(!accept) {
+                    System.out.println("WRONG ANSWER");    
+                } else {
+                    System.out.println("ACCEPTED");
+                }
+            }
+        }
+    }
+}
